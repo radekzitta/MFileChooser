@@ -76,15 +76,15 @@ public class MFileChooser extends CordovaPlugin implements ActivityCompat.OnRequ
 
         Intent intent = null;
 
-        if (Build.VERSION.SDK_INT >= 19) {
-            intent = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("image/*");
-            intent.putExtra("return-data", true);
-        } else {
-            intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setClass(context, FileChooserActivity.class);
-        }
+        //if (Build.VERSION.SDK_INT >= 19) {
+        //    intent = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //    intent.addCategory(Intent.CATEGORY_OPENABLE);
+        //    intent.setType("image/*");
+        //    intent.putExtra("return-data", true);
+        //} else {
+        intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setClass(context, FileChooserActivity.class);
+        //}
 
 
         if (ext.size() > 0) {
