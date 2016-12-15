@@ -122,25 +122,25 @@ public class MFileChooser extends CordovaPlugin implements ActivityCompat.OnRequ
         if ( lastIntent == null ) {
             return;
         }
-        if (Build.VERSION.SDK_INT >= 19) {
-            ClipData clipData = lastIntent.getClipData();
-            if (clipData != null && clipData.getItemCount() > 0) {
-                processClipData(clipData);
-            } else {
-                try {
-                    Uri originalUri = transformUri(lastIntent);
-                    Uri imageUri = getImageUri(originalUri);
-                    if (imageUri == null) {
-                        callback.error("not support");
-                    } else {
-                        callback.success(imageUri.toString());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    callback.error("not support");
-                }
-            }
-        } else {
+        //if (Build.VERSION.SDK_INT >= 19) {
+        //    ClipData clipData = lastIntent.getClipData();
+        //    if (clipData != null && clipData.getItemCount() > 0) {
+        //        processClipData(clipData);
+        //    } else {
+        //        try {
+        //            Uri originalUri = transformUri(lastIntent);
+        //            Uri imageUri = getImageUri(originalUri);
+        //            if (imageUri == null) {
+        //                callback.error("not support");
+        //            } else {
+        //                callback.success(imageUri.toString());
+        //            }
+        //        } catch (IOException e) {
+        //            e.printStackTrace();
+        //            callback.error("not support");
+        //        }
+        //    }
+        //} else {
             String uri = lastIntent.getStringExtra(Constants.KEY_FILE_SELECTED);
             if (uri != null) {
                 Log.w(TAG, uri.toString());
@@ -149,7 +149,7 @@ public class MFileChooser extends CordovaPlugin implements ActivityCompat.OnRequ
                 callback.error("File uri was null");
 
             }
-        }
+        //}
     }
 
     private void processClipData(ClipData clipData) {
